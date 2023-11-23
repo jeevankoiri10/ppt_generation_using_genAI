@@ -7,8 +7,8 @@ from dash.forms import GenerationForm
 from dash.models import GenerationHistory
 from django_q.tasks import async_task
 
-from .ai_loader import get_ai_func
-process_with_ai=get_ai_func()
+from .ai import process_with_ai
+
 
 class GenerationHistoryListView(LoginRequiredMixin, ListView):
     model = GenerationHistory
