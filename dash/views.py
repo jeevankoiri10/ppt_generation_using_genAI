@@ -15,7 +15,6 @@ class GenerationHistoryListView(LoginRequiredMixin, ListView):
         )
 
 
-
 class NewGenerationView(LoginRequiredMixin, CreateView):
     model = GenerationHistory
     fields = ['title', 'document', 'author_override']
