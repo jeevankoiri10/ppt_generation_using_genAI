@@ -4,6 +4,7 @@ import os
 from django.core.files.base import ContentFile
 
 from dash.models import GenerationHistory
+from django.core.files.storage import default_storage
 
 import torch
 import pandas as pd
@@ -56,7 +57,7 @@ def slideGenerator(title, subtitle, presentation):
 
 def process_with_ai(generation_request: GenerationHistory):
     input_file = generation_request.document
-    with open(input_file.path, 'r') as file:
+    with default_storage.open(input_file.name, 'r') as file:
         presentation = Presentation("./assets/template3.pptx")
         content = file.read()
         title = generation_request.title
