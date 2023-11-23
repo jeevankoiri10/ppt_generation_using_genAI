@@ -1,9 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic import ListView, CreateView
 
+from dash.ai import process_with_ai
 from dash.forms import GenerationForm
 from dash.models import GenerationHistory
+from django_q.tasks import async_task
 
 
 class GenerationHistoryListView(LoginRequiredMixin, ListView):
@@ -18,6 +21,7 @@ class GenerationHistoryListView(LoginRequiredMixin, ListView):
         )
 
 
+@login_required
 def new_generation_view(request):
     if request.method == 'POST':
         form = GenerationForm(request.POST, request.FILES)
@@ -26,6 +30,7 @@ def new_generation_view(request):
             form.save()
 
             # Run in BG the processing script
+            async_task(process_with_ai, form.instance)
             return redirect('dash:history-list')
     else:
         form = GenerationForm()

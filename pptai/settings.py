@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_q',
 
     "widget_tweaks",
 
@@ -128,3 +129,21 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL = "/dash/history"
+
+Q_CLUSTER = {
+    'name': 'PPT Gen AI',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'orm': 'default'
+    # 'redis': {
+    #     'host': '127.0.0.1',
+    #     'port': 6379,
+    #     'db': 0,
+    # }
+}
