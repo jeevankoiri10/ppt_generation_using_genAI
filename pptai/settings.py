@@ -134,7 +134,7 @@ LOGIN_REDIRECT_URL = "/dash/history"
 
 Q_CLUSTER = {
     'name': 'PPT Gen AI',
-    'workers': 8,
+    'workers': 1,
     'recycle': 500,
     'timeout': 600,
     'compress': True,
