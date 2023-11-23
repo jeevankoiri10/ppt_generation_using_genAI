@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Transforming text documents into captivating presentations automatically. PPTAI utilizes advanced AI to analyze headings, group content, and generate summaries, crafting polished PowerPoint files effortlessly.">
+    <meta name="keywords"
+          content="PPTAI, Presentation AI, Text-to-Presentation, AI-Powered Presentation, Automatic Presentation Generator">
+    <meta name="author" content="Saurav Adhikari, Prasiddha Bhakta Khawas, Jeevan Koiri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPTAI - Transforming Text into Captivating Presentations Automatically">
+    <meta name="twitter:description"
+          content="Utilizing advanced AI, PPTAI analyzes headings, groups content, and generates polished PowerPoint files effortlessly.">
+    <meta name="twitter:image" content="URL_TO_IMAGE">
+
+    <!-- Open Graph for Facebook -->
+    <meta property="og:title" content="PPTAI - Transforming Text into Captivating Presentations Automatically">
+    <meta property="og:description"
+          content="Utilizing advanced AI, PPTAI analyzes headings, groups content, and generates polished PowerPoint files effortlessly.">
+    <meta property="og:image" content="URL_TO_IMAGE">
+    <meta property="og:url" content="URL_TO_PAGE">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PPTAI">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rippleui@1.12.1/dist/css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SEO Title -->
+    <title>PPTAI - Automating Text-to-Presentation with Advanced AI</title>
+</head>
+<body>
+<div class="flex flex-row sm:gap-10 h-screen bg_image">
+    {#         style="background-image: url(https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);">#}
+    {% include "components/sidebar.html" %}
+    <div class="flex w-full flex-col p-4 pr-8">
+        <div class="w-fit">
+            <label for="sidebar-mobile-fixed" class="btn-primary btn sm:hidden">Open Sidebar</label>
+        </div>
+        {% block body %}
+            Nothing in the Body
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>
