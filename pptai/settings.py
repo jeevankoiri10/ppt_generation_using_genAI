@@ -134,7 +134,7 @@ Q_CLUSTER = {
     'name': 'PPT Gen AI',
     'workers': 8,
     'recycle': 500,
-    'timeout': 60,
+    'timeout': 600,
     'compress': True,
     'save_limit': 250,
     'queue_limit': 500,
