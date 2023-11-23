@@ -55,9 +55,6 @@ def slideGenerator(title, subtitle, presentation):
 
 
 def process_with_ai(generation_request: GenerationHistory):
-    if not load_ai:
-        return
-
     input_file = generation_request.document
     with open(input_file.path, 'r') as file:
         presentation = Presentation("./assets/template3.pptx")
