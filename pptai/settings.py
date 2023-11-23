@@ -126,3 +126,5 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     }
 }
+
+LOGIN_REDIRECT_URL = "/dash/history"

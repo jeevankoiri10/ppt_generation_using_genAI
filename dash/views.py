@@ -9,6 +9,12 @@ class GenerationHistoryListView(LoginRequiredMixin, ListView):
     template_name = "dash/history/list.html"
     context_object_name = "history"
 
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            author=self.request.user
+        )
+
+
 
 class NewGenerationView(LoginRequiredMixin, CreateView):
     model = GenerationHistory

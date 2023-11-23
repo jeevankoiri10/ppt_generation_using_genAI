@@ -1,4 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+
+USER = get_user_model()
 
 
 class GenerationHistory(models.Model):
@@ -14,6 +18,8 @@ class GenerationHistory(models.Model):
     # The document
     document = models.FileField(upload_to='documents/source/')
     presentation = models.FileField(upload_to='documents/generation/', null=True, blank=True)
+
+    author = models.ForeignKey(USER, on_delete=models.CASCADE, null=True, blank=True)
 
     @property
     def is_processing(self):
