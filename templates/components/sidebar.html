@@ -99,11 +99,17 @@
                 <label class="whites mx-2 flex h-fit w-full cursor-pointer p-0 hover:bg-gray-4" tabindex="0">
                     <div class="flex flex-row gap-4 p-4">
                         <div class="avatar-square avatar avatar-md">
-                            <img src="https://i.pravatar.cc/150?img=30" alt="avatar"/>
+                            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ request.user.username }}"
+                                 alt="avatar"/>
                         </div>
-
-                        <div class="flex flex-col">
-                            <span>{{ request.user.first_name }} {{ request.user.last_name }}</span>
+                        <div class="flex flex-col dark:text-white">
+                            <span>
+                                {% if request.user.first_name != "" or request.user.last_name != "" %}
+                                    {{ request.user.first_name }} {{ request.user.last_name }}
+                                {% else %}
+                                    {{ request.user.username }}
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                 </label>
