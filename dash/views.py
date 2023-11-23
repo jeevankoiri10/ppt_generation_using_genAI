@@ -7,8 +7,6 @@ from dash.forms import GenerationForm
 from dash.models import GenerationHistory
 from django_q.tasks import async_task
 
-from .ai import process_with_ai
-
 
 class GenerationHistoryListView(LoginRequiredMixin, ListView):
     model = GenerationHistory
@@ -31,7 +29,7 @@ def new_generation_view(request):
             form.save()
 
             # Run in BG the processing script
-            async_task(process_with_ai, form.instance)
+            async_task('dash.ai.process_with_ai', form.instance)
             return redirect('dash:history-list')
     else:
         form = GenerationForm()
