@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, CreateView
 
+from dash.forms import GenerationForm
 from dash.models import GenerationHistory
 
 
@@ -8,6 +10,7 @@ class GenerationHistoryListView(LoginRequiredMixin, ListView):
     model = GenerationHistory
     template_name = "dash/history/list.html"
     context_object_name = "history"
+    paginate_by = 5
 
     def get_queryset(self):
         return super().get_queryset().filter(
@@ -15,11 +18,15 @@ class GenerationHistoryListView(LoginRequiredMixin, ListView):
         )
 
 
-class NewGenerationView(LoginRequiredMixin, CreateView):
-    model = GenerationHistory
-    fields = ['title', 'document', 'author_override']
-    template_name = "dash/generation/new.html"
+def new_generation_view(request):
+    if request.method == 'POST':
+        form = GenerationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.author = request.user
+            form.save()
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+            # Run in BG the processing script
+            return redirect('dash:history-list')
+    else:
+        form = GenerationForm()
+    return render(request, 'dash/generation/new.html', {'form': form})
