@@ -24,4 +24,4 @@ class GenerationHistory(models.Model):
     @property
     def is_processing(self):
         # Assumes that if presentation is not present, then it's processing
-        return self.presentation != '' or self.presentation is not None
+        return self.presentation == '' or self.presentation is None
