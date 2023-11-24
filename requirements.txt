@@ -64,12 +64,12 @@ safetensors==0.4.0
 six==1.16.0
 sqlparse==0.4.4
 sympy==1.12
-tensorboard==2.15.1
-tensorboard-data-server==0.7.2
-tensorflow==2.15.0
-tensorflow-estimator==2.15.0
-tensorflow-intel==2.15.0
-tensorflow-io-gcs-filesystem==0.31.0
+# tensorboard==2.15.1
+# tensorboard-data-server==0.7.2
+# tensorflow==2.15.0
+t# ensorflow-estimator==2.15.0
+# tensorflow-intel==2.15.0
+# tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.3.0
 tokenizers==0.15.0
 torch==2.1.1
