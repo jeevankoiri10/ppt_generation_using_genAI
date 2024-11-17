@@ -36,5 +36,3 @@ The following technologies were used to develop PPTGenAI:
 
 ## Purpose  
 This project demonstrates the integration of advanced machine learning models with practical applications in automation and productivity. It highlights the potential of AI to simplify complex tasks such as presentation creation.
-
--
